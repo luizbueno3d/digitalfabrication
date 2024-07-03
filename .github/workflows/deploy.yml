@@ -17,8 +17,6 @@ jobs:
 
       - name: Deploy
         run: |
-          mkdir -p public
-          echo "Your custom content" > public/index.html
-          mv public/* .
+          mv * ../
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
