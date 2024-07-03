@@ -1,0 +1,24 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Pages
+        uses: actions/setup-pages@v1
+
+      - name: Deploy
+        run: |
+          mkdir -p public
+          echo "Your custom content" > public/index.html
+          mv public/* .
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
